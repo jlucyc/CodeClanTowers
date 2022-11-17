@@ -5,9 +5,15 @@ public abstract class Room {
 
     private ArrayList<Guest> guests;
 
-    public Room(){
+    private Double length;
+
+    private Double width;
+
+    public Room(Double length, Double width){
 
         this.guests = new ArrayList<Guest>();
+        this.length = length;
+        this.width = width;
     }
 
     public ArrayList<Guest> getGuests() {
@@ -28,5 +34,9 @@ public abstract class Room {
 
     public void removeGuests() {
         this.guests.clear();
+    }
+
+    public Double calculateSize(){
+        return length*width;
     }
 }
