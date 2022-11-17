@@ -5,15 +5,19 @@ public class Bedroom extends Room {
     private RoomType roomType;
     private String roomNumber;
 
-    public Bedroom(RoomType roomType, String roomNumber){
+    private int rate;
+
+    public Bedroom(RoomType roomType, String roomNumber, int rate){
 
         this.roomType = roomType;
         this.roomNumber = roomNumber;
+        this.rate = rate;
     }
 
 
     public RoomType getRoomType() {
         return this.roomType;
+
     }
 
     public void setRoomType(RoomType roomType) {
@@ -30,5 +34,9 @@ public class Bedroom extends Room {
 
     public int getCapacityFromEnum() {
         return this.roomType.getCapacity();
+    }
+
+    public int getRate() {
+        return this.rate;
     }
 }

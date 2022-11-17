@@ -11,12 +11,15 @@ public class HotelTest {
 
     Guest guest;
 
+    DiningRoom diningRoom;
+
     @Before
     public void before(){
         hotel = new Hotel("CodeClan Towers");
-        bedroom = new Bedroom(RoomType.SUITE, "200");
+        bedroom = new Bedroom(RoomType.SUITE, "200", 99);
         conferenceRoom = new ConferenceRoom("Lewis");
         guest = new Guest("Frank");
+        diningRoom = new DiningRoom("Brasserie", 20);
 
     }
 
@@ -60,4 +63,25 @@ public class HotelTest {
         hotel.checkOutGuest(conferenceRoom);
         assertEquals(0, conferenceRoom.getGuestsLength());
     }
+
+    @Test
+    public void canBookRoom(){
+        Booking booking = hotel.bookRoom(bedroom, 3);
+        assertEquals("200", booking.getBedroomNumber());
+        assertEquals(3, booking.getNights());
+    }
+
+    @Test
+    public void calculatesTotalBill(){
+        Booking booking = hotel.bookRoom(bedroom, 3);
+        assertEquals(297, booking.calculateTotalCost());
+    }
+
+    @Test
+    public void canAddDiningRoomToDiningRooms(){
+        hotel.addDiningRoom(diningRoom);
+        assertEquals(1, hotel.countDiningRooms());
+    }
+
+
 }
